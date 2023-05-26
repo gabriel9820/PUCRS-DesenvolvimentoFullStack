@@ -1,0 +1,38 @@
+<script>
+  console.log("[Pilha/Stack]");
+  // o último que entra é o primeiro que sai (LIFO)
+
+  class BrowserHistoryStack {
+    constructor() {
+      this.data = [];
+      this.cursor = 0;
+    }
+
+    push(item) {
+      this.data.push(item);
+      this.cursor++;
+    }
+
+    back() {
+      //this.data.pop();
+      this.cursor--;
+    }
+
+    clear() {
+      this.data = [];
+    }
+
+    print() {
+      console.log("Cursor: ", this.cursor);
+      console.log("Itens: ", this.data);
+    }
+  }
+
+  var browserHistory = new BrowserHistoryStack();
+  browserHistory.push("https://google.com");
+  browserHistory.push("https://youtube.com");
+  browserHistory.push("https://facebook.com");
+  browserHistory.print();
+  browserHistory.back();
+  browserHistory.print();
+</script>
