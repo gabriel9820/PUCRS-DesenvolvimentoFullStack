@@ -11,4 +11,5 @@ funções de filtragem, mapeamento e redução. Estudo sobre construtores de tip
 </br>
 
 Alessandro Valério
+<br/>
 Edson Ifarraguirre Moreno

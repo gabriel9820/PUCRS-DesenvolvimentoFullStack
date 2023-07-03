@@ -11,4 +11,5 @@ Git, GitHub, Maven, Gradle, Npm, Yarn, GitHub Actions, Jenkins, Travis e Docker.
 </br>
 
 Fabricio Veronez
+<br/>
 Marco Aurélio Souza Mangan
