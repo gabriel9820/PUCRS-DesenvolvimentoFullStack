@@ -5,6 +5,7 @@ import { Counter } from "./components/Counter";
 import { CounterReducer } from "./components/CounterReducer";
 import { HelloWorld } from "./components/HelloWorld";
 import { HelloWorldColorful } from "./components/HelloWorldColorful";
+import { Clock } from "./components/Clock";
 
 function App() {
   function handleClick(event: React.MouseEvent) {
@@ -27,6 +28,9 @@ function App() {
       <Counter />
       <br />
       <CounterReducer />
+
+      <hr />
+      <Clock />
     </div>
   );
 }
