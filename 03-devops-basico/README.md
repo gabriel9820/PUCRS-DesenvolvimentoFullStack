@@ -2,7 +2,8 @@
 
 </br>
 
-Introdução aos fundamentos de gerência de configuração. Estudo sobre Integração contínua (CI).
+Introdução aos fundamentos de gerência de configuração. 
+Estudo sobre Integração contínua (CI).
 Utilização de contêineres, ferramentas e ambientes direcionados ao desenvolvimento de software como
 Git, GitHub, Maven, Gradle, Npm, Yarn, GitHub Actions, Jenkins, Travis e Docker.
 
