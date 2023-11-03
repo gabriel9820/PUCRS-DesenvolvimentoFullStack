@@ -1,0 +1,159 @@
+INSERT INTO VEICULOS VALUES ('ABC-1234', 2023, 10000, 'Chevrolet', 'Astra');
+
+SELECT * FROM VEICULOS;
+
+SELECT DISTINCT MARCA FROM VEICULOS;
+
+CREATE TABLE PESSOAS 
+( 
+cpf VARCHAR(20) NOT NULL, 
+nome VARCHAR(150) NOT NULL, 
+idade NUMBER(3) NULL, 
+endereco VARCHAR(150) -- o campo endereço é NULL implicitamente 
+);
+
+INSERT INTO PESSOAS (cpf, nome, idade, endereco) 
+VALUES ('32809', 'Maria', 25, 'Rua A, 20');
+
+INSERT INTO PESSOAS (idade, endereco, cpf, nome) 
+VALUES (25, 'Rua A, 20', '30599', 'Pedro');
+
+INSERT INTO PESSOAS (cpf, nome, idade, endereco) 
+VALUES ('29385', 'Carlos', NULL, NULL);
+
+INSERT INTO PESSOAS (cpf, nome, idade, endereco) 
+VALUES ('39582', 'Alice', 80, NULL);
+
+INSERT INTO PESSOAS (cpf, nome, idade, endereco) 
+VALUES ('78838', 'Antonio', NULL, 'Rua B, 80');
+
+INSERT INTO PESSOAS (cpf, nome) 
+VALUES ('90038', 'Ana Paula');
+
+INSERT INTO PESSOAS (cpf, nome, idade) 
+VALUES ('23487', 'Patricia', 18);
+
+INSERT INTO PESSOAS (cpf, nome, endereco) 
+VALUES ('23363', 'Jose', 'Rua C, 50');
+
+SELECT * 
+FROM PESSOAS 
+WHERE idade IS NULL;
+
+SELECT * 
+FROM PESSOAS 
+WHERE endereco IS NOT NULL;
+
+SELECT * 
+FROM PESSOAS 
+WHERE nome LIKE 'A%';
+
+SELECT * 
+FROM PESSOAS 
+WHERE nome LIKE 'Ana%';
+
+SELECT * 
+FROM PESSOAS 
+WHERE nome LIKE '%Silva';
+
+SELECT * 
+FROM PESSOAS 
+WHERE nome LIKE '%Carlos%';
+
+SELECT * 
+FROM PESSOAS 
+WHERE nome LIKE 'Mari_ da Silva';
+
+SELECT * 
+FROM PESSOAS 
+WHERE idade IN (25, 30, 40);
+
+ALTER TABLE PESSOAS 
+ADD sexo CHAR(1);
+
+ALTER TABLE PESSOAS 
+DROP COLUMN idade;
+
+ALTER TABLE PESSOAS 
+ADD datanasc DATE NULL;
+
+DESCRIBE PESSOAS;
+
+INSERT INTO PESSOAS (cpf, nome, datanasc, endereco) 
+VALUES ('29048', 'Roberto', '03-FEB-1980', 'Rua D, 80');
+
+INSERT INTO PESSOAS (cpf, nome, datanasc, endereco) 
+VALUES ('29048', 'Roberto', DATE '1980-02-03', 'Rua D, 80');
+
+SELECT * FROM PESSOAS;
+
+SELECT TO_CHAR(SYSDATE, 'MONTH, DD, YYYY 
+HH24:MI:SS') 
+FROM DUAL;
+
+SELECT nome, TO_CHAR(datanasc, 'MONTH, DD, YYYY') 
+FROM PESSOAS;
+
+INSERT INTO PESSOAS (cpf, nome, 
+datanasc, endereco) 
+VALUES ( 
+'29920', 
+'Beto', 
+TO_DATE('25-FEB-1979 21:36:28', 
+'DD-MON-YYYY HH24:MI:SS'), 
+'Rua E, 80' 
+);
+
+SELECT SYSDATE + 1 
+FROM DUAL;
+
+CREATE TABLE ALUNOS 
+( 
+nroMatricula VARCHAR(10) NOT NULL, 
+cpf VARCHAR(20) NOT NULL, 
+email VARCHAR(100) NOT NULL, 
+nome VARCHAR(150) NOT NULL, 
+anoIngresso NUMBER(4) NOT NULL, 
+endereco VARCHAR(150) NULL, 
+sexo CHAR(1) NOT NULL, 
+CONSTRAINT PK_ALUNOS PRIMARY KEY (nroMatricula), 
+CONSTRAINT AK1_ALUNOS UNIQUE (cpf), 
+CONSTRAINT AK2_ALUNOS UNIQUE (email) 
+);
+
+ALTER TABLE ALUNOS 
+ADD CONSTRAINT CK_AnoIngr CHECK (anoIngresso > 2000);
+
+ALTER TABLE ALUNOS 
+ADD CONSTRAINT CK_sexo CHECK (sexo IN ('M', 'F'));
+
+CREATE TABLE ESTADOS 
+( 
+	uf CHAR(2) NOT NULL, 
+	nome VARCHAR2(40) NOT NULL, 
+	regiao CHAR(2) NOT NULL  
+	CONSTRAINT PK_ESTADOS PRIMARY KEY (uf) 
+);
+
+CREATE TABLE CIDADES 
+( 
+	cod_cidade NUMBER(4) NOT NULL, 
+	nome VARCHAR2(60) NOT NULL, 
+	uf CHAR(2) NOT NULL, 
+	CONSTRAINT PK_CIDADES PRIMARY KEY (cod_cidade) 
+);
+
+CREATE TABLE ESTADOS 
+( 
+	uf CHAR(2) NOT NULL, 
+	nome VARCHAR2(40) NOT NULL, 
+	regiao CHAR(2) NOT NULL, 
+	CONSTRAINT PK_ESTADOS PRIMARY KEY (uf) 
+);
+
+ALTER TABLE CIDADES ADD 
+(  
+	CONSTRAINT FK_EST_CID FOREIGN KEY (uf) REFERENCES ESTADOS (uf) 
+);
+
+DESCRIBE CIDADES;
