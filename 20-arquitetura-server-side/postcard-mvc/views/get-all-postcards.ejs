@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Cidade</th>
+        <th>País</th>
+        <th>Descrição</th>
+        <th>Imagem</th>
+      </tr>
+      <% postcards.forEach(p => { %>
+      <tr>
+        <td><%= p.id %></td>
+        <td><%= p.name %></td>
+        <td><%= p.cidade %></td>
+        <td><%= p.pais %></td>
+        <td><%= p.descricao %></td>
+        <td><%= p.imageUrl %></td>
+      </tr>
+      <% }); %>
+    </table>
+  </body>
+</html>
